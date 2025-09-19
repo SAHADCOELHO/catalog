@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Allô Kapri — Catálogo</title>
+<link rel="stylesheet" href="/public/assets/style.css" />
+</head>
+<body>
+<header class="hdr">
+  <div class="brand">Allô Kapri</div>
+  <input id="search" class="search" placeholder="Pesquisar modelos..."/>
+  <div class="spacer"></div>
+  <select id="market" class="market">
+    <option value="AO">Angola (AOA)</option>
+    <option value="US">Estrangeiro (USD)</option>
+  </select>
+</header>
+
+<div class="filters">
+  <button class="filter-card active" data-type="iphone">iPhones</button>
+  <button class="filter-card" data-type="macbook">MacBooks</button>
+  <button class="filter-card" data-type="ipad">iPads</button>
+  <button class="filter-card" data-type="acessorio">Acessórios</button>
+</div>
+
+<div id="alert" class="alert hidden"></div>
+<div id="grid" class="grid"></div>
+
+<script src="/public/assets/app.js"></script>
+  <script src="/public/assets/patches.js"></script>
+</body>
+</html>

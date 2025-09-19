@@ -1,0 +1,230 @@
+
+:root{--bg:#0a0a0a;--card:#111;--muted:#bbb;--primary:#ff7a00;--chip:#1a1a1a}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:#fff;font-family:Inter,system-ui,sans-serif}
+.hdr{position:sticky;top:0;z-index:4;background:#0a0a0acc;display:flex;gap:12px;align-items:center;padding:12px 16px;border-bottom:1px solid #222}
+.brand{color:#ff7a00;font-weight:900;font-size:22px}
+.search,.market{background:#171717;border:1px solid #333;border-radius:10px;color:#fff;padding:8px}
+.spacer{flex:1}
+.filters{display:flex;justify-content:center;gap:10px;padding:12px;flex-wrap:wrap}
+.filter-card{background:#111;border:1px solid #333;padding:8px 14px;border-radius:12px;color:#fff;cursor:pointer}
+.filter-card.active{background:#ff7a00;color:#000}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;padding:16px}
+.card{background:var(--card);border:1px solid #222;border-radius:16px;overflow:hidden;display:flex;flex-direction:column;min-height:420px}
+.media{position:relative;height:180px;background:#0b0b0b;display:flex;align-items:center;justify-content:center}
+.media img{max-width:100%;max-height:100%}
+.badge{position:absolute;top:10px;left:10px;background:#ff7a00;color:#000;padding:4px 8px;border-radius:8px;font-size:12px;font-weight:700}
+.content{padding:14px;display:flex;flex-direction:column;gap:8px}
+.title{font-size:22px;font-weight:900;text-shadow:0 0 8px #ff7a0033}
+.stars{color:#ffcc33;font-size:14px}
+.price{font-size:22px;font-weight:900;margin-top:4px}
+.row{display:flex;gap:8px;flex-wrap:wrap}
+.chip{border:1px solid #444;padding:4px 10px;border-radius:999px;background:var(--chip);color:#fff;cursor:pointer}
+.chip.active{background:#ff7a00;color:#000}
+.dots{display:flex;gap:8px}
+.dot{width:18px;height:18px;border-radius:50%;border:2px solid #666;cursor:pointer}
+.dot.active{border-color:#fff;box-shadow:0 0 0 2px #ff7a0044}
+.buy{background:#ff7a00;color:#000;border:none;border-radius:10px;padding:10px;font-weight:800;cursor:pointer;margin-top:6px}
+.alert{margin:8px auto;background:#2b0000;border:1px solid #600;color:#ff6e6e;padding:10px 12px;border-radius:10px;width:min(900px,92%)}
+.hidden{display:none}
+.muted{color:var(--muted);font-size:12px}
+
+/* --- Yankei fixes: WhatsApp underline off + card alignment --- */
+.buy, .buy:visited, .buy:hover { text-decoration: none !important; }
+.grid{ align-items: stretch; }
+
+/* --- Yankei Fix 2: center and 3D style for buy button --- */
+.buy{
+  display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+  transform: translateY(0);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.buy:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.5);
+}
+
+/* --- Patch: Center WhatsApp button + subtle 3D effect --- */
+.buy{
+  display:inline-block;
+  align-self:center;
+  width:auto;
+  max-width:100%;
+  text-align:center;
+  padding:12px 18px; /* slightly larger for tap target */
+  border-radius:12px;
+  font-weight:900;
+  box-shadow: 0 6px 14px rgba(255,122,0,0.25), 0 2px 6px rgba(0,0,0,0.35);
+  transform: translateZ(0);
+  transition: transform 120ms ease, box-shadow 120ms ease, opacity 120ms ease;
+}
+.buy:hover{
+  transform: translateY(-1px);
+  box-shadow: 0 10px 22px rgba(255,122,0,0.28), 0 4px 10px rgba(0,0,0,0.4);
+}
+.buy:active{
+  transform: translateY(0);
+  box-shadow: 0 4px 10px rgba(255,122,0,0.22), 0 1px 3px rgba(0,0,0,0.3);
+}
+
+/* --- Patch v3: Softer, lighter look (no layout changes) --- */
+/* Tipografia mais leve */
+.brand{ font-weight: 700 !important; letter-spacing: .2px; }
+.price{ font-weight: 700 !important; }
+.content h3, .content .title, .card .title{ font-weight: 600 !important; }
+
+/* Chips/Opções mais suaves */
+.chip{ font-weight: 600; border-color: #3a3a3a; }
+.chip.active{ font-weight: 700; }
+
+/* Botão WhatsApp mais clean e suave */
+.buy{
+  font-weight: 600 !important;
+  border-radius: 14px;
+  box-shadow: 0 6px 12px rgba(0,0,0,.28), 0 4px 10px rgba(255,122,0,.18);
+}
+.buy:hover{
+  box-shadow: 0 10px 18px rgba(0,0,0,.32), 0 6px 14px rgba(255,122,0,.22);
+}
+
+/* Espaçamento e respiro */
+.content{ gap: 10px; } /* sutil, sem quebrar layout */
+.row{ gap: 10px; }
+
+/* --- Patch v4: premium softness & micro-interactions (no layout changes) --- */
+
+/* 1) Badge (selo) mais alto e delicado */
+.badge{
+  top: 4px !important;          /* sobe um pouco */
+  left: 10px;
+  padding: 3px 7px !important;  /* menor para não encostar na imagem */
+  font-size: 11px !important;
+  border-radius: 10px !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,.35);
+}
+
+/* 2) Botão WhatsApp mais premium (hover mais suave) */
+.buy{
+  border-radius: 16px !important;
+  transition: transform 140ms ease, box-shadow 140ms ease, opacity 140ms ease, background-color 140ms ease, filter 140ms ease;
+}
+.buy:hover{
+  filter: brightness(1.05);
+}
+
+/* 3) Tipografia mais clean e leve */
+.price{ letter-spacing: .2px !important; }
+.content h3, .content .title, .card .title{ letter-spacing: .2px !important; }
+.brand{ letter-spacing: .2px !important; }
+
+/* Remover sombras de texto exageradas caso existam */
+.card .title, .price, .brand{
+  text-shadow: none !important;
+}
+
+/* 4) Cards com hover sutil (leveza e profundidade) */
+.card{
+  transition: transform 160ms ease, box-shadow 160ms ease, background-color 160ms ease, border-color 160ms ease;
+  background: rgba(17,17,17,0.92); /* mantém o mesmo tom, apenas mais "soft" */
+  border-color: #222;
+}
+.card:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(0,0,0,.35);
+}
+
+/* 5) Chips, dots e filtros com feedback suave */
+.chip, .filter-card{
+  transition: background-color 140ms ease, color 140ms ease, border-color 140ms ease, transform 120ms ease;
+  border-color: #2a2a2a;
+}
+.chip:hover, .filter-card:hover{
+  transform: translateY(-1px);
+}
+
+/* 6) Dots (cores) com foco mais elegante */
+.dot{
+  transition: box-shadow 140ms ease, transform 120ms ease, border-color 140ms ease;
+}
+.dot:hover{
+  transform: scale(1.04);
+}
+
+/* 7) Grid e alinhamento permanecem (sem alterar layout) */
+/* (mantemos ajustes prévios de align-items:stretch e altura dos cards) */
+
+/* --- Patch v5: Apple-style naming + kicker + green badge --- */
+.badge{ background:#22c55e !important; color:#0a0a0a !important; font-weight: 700; }
+.kicker{ font-size: 11px; color: var(--muted); margin-bottom: 2px; letter-spacing: .3px; }
+
+/* --- Patch v6: Desde + old price (strikethrough) + smaller stars --- */
+.stars{ font-size: 12px !important; }
+.reviews-count{ font-size: 11px; color: var(--muted); }
+.starting{ font-size: 12px; color: var(--muted); margin-top: 4px; margin-bottom: -4px; letter-spacing: .3px; }
+.price-old{ font-size: 13px; color: var(--muted); text-decoration: line-through; margin-top: 2px; }
+
+
+
+/* --- Ajuste fino: aproxima "desde" do preço (sem mudar tema) --- */
+.price-line, .priceRow, .since-price, .price {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 4px; /* antes estava maior; aproxima o rótulo do valor */
+}
+
+.price .prefix, .since, .desde {
+  margin-right: 4px !important;
+}
+
+.price .value, .amount, .money {
+  letter-spacing: 0.2px;
+}
+
+
+/* v16: Vertical price block (Desde acima do preço) */
+.price-block{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  gap:4px;
+  margin:0; padding:0;
+}
+.price-block .starting{
+  font-style:italic;
+  font-size:12px;
+  opacity:.92;
+  margin:0; padding:0;
+  line-height:1.05;
+}
+.price-block .price-old{
+  font-size:12px;
+  opacity:.7;
+  text-decoration:line-through;
+  margin:0; padding:0;
+  line-height:1.05;
+}
+.price-block .price{
+  margin:0; padding:0;
+  font-weight:700;
+  line-height:1.1;
+}
+
+/* Badge: Entrega imediata em Angola */
+.delivery-badge{
+  background:#16a34a;
+  color:#fff;
+  font-size:12px;
+  font-weight:700;
+  padding:4px 10px;
+  border-radius:8px;
+  display:none;
+  margin-top:6px;
+  align-self:flex-start;
+  animation:fadeIn .25s ease forwards;
+}
+@keyframes fadeIn{
+  from{opacity:0; transform:translateY(-3px);}
+  to{opacity:1; transform:translateY(0);}
+}
