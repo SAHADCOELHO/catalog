@@ -103,7 +103,7 @@ function whatsappLink(p, state, displayPrice){
               `Cor: ${state.color}%0A` +
               `Preço: ${displayPrice}`;
   // Coloque o teu número abaixo (com código do país, sem +)
-  const phone = '244000000000';
+  const phone = '244936777484';
   return `https://wa.me/${phone}?text=${msg}`;
 }
 
